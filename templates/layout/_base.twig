@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  {% block head %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8" />
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+  {% endblock %}
+</head>
+<body class="ltr">
+  {% block nav %}
+    <nav>
+      <ul class="nav-container">
+        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/posts" class="nav-link">Latest Posts</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  {% endblock %}
+
+  {% block main %}{% endblock %}
+
+  {% block footer %}
+    <footer>
+      <p>&copy; {{ "now"|date('Y') }} The Blurr Co.</p>
+    </footer>
+  {% endblock %}
+</body>

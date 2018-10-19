@@ -1,0 +1,21 @@
+{# Get the requested entry slug from the URL #}
+{% set postQuery = craft.app.request.getSegment(3) %}
+
+{# Fetch the entry with that slug #}
+{% set post = craft.entries()
+    .slug(postQuery|literal)
+    .one() %}
+
+{% extends "layout/_base" %}
+{% block main %}
+<a href="/posts">Back</a>
+<main>
+  <h1>{{ post.headline }}</h1>
+  <h2>{{ post.subheadline }}</h2>
+  <p>{{ post.introParagraph }}</p>
+  <hr>
+  {% autoescape %}
+    {{ post.body|raw }}
+  {% endautoescape %}
+</main>
+{% endblock %}

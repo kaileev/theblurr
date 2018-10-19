@@ -1,0 +1,23 @@
+{# Create an entry query and set some parameters on it #}
+{%
+  set postsQuery = craft.entries()
+  .section('posts')
+  .orderBy('postDate desc')
+  .limit(10)
+%}
+
+{# Execute the query and get the results #}
+{% set posts = postsQuery.all() %}
+
+{% extends "layout/_base" %}
+{% block main %}
+<main>
+  <h1>Latest Posts</h1>
+  <p>Welcome to The Blurr. Here you will find all my latest thoughts on fashion, food, and my amazing boyfriend. Especially how amazing my boyfriend is.</p>
+  <ul>
+    {% for post in posts %}
+    <li><a href="/posts/{{post.slug}}">{{ post.headline|e }}</a></li>
+    {% endfor %}
+  </ul>
+</main>
+{% endblock %}
